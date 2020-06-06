@@ -80,6 +80,14 @@ defmodule Phoenix.LiveComponent do
   In stateful components, `c:mount/1` is called only once, when the
   component is first rendered. Then for each rendering, the optional
   `c:preload/1` and `c:update/2` callbacks are called before `c:render/1`.
+  
+  So on first render, the following callbacks will be invoked:
+
+      mount(socket) -> update(assigns, socket) -> render(assigns)
+      
+  On subsequent renders, these callbacks will be invoked:
+  
+      update(assigns, socket) -> render(assigns)
 
   ## Targeting Component Events
 
